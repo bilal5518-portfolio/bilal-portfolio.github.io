@@ -580,3 +580,4 @@ section{position:relative}
 .cta .eyebrow::before{background:var(--volt)}
 .dark .socials a.s-tt{box-shadow:inset 0 0 0 1px #3A3A40}
 .logo-row .bdg{width:auto;min-width:24px;padding:0 4px}
+.brand-name .bl{color:var(--volt)}
