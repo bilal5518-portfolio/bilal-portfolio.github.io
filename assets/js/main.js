@@ -61,44 +61,6 @@
     counters.forEach(function (el) { co.observe(el); });
   }
 
-  if (fine && !reduce) {
-    // Cursor glow
-    var glow = document.createElement('div');
-    glow.className = 'cursor-glow';
-    document.body.appendChild(glow);
-    var gx = -999, gy = -999, tx = -999, ty = -999;
-    window.addEventListener('mousemove', function (e) { tx = e.clientX; ty = e.clientY; }, { passive: true });
-    (function loop() {
-      gx += (tx - gx) * 0.12; gy += (ty - gy) * 0.12;
-      glow.style.transform = 'translate3d(' + gx + 'px,' + gy + 'px,0)';
-      requestAnimationFrame(loop);
-    })();
-
-    // Hero 3D parallax
-    var stage = document.querySelector('.stage');
-    var card = document.querySelector('.stage-card');
-    if (stage && card) {
-      stage.addEventListener('mousemove', function (e) {
-        var r = stage.getBoundingClientRect();
-        var x = (e.clientX - r.left) / r.width - 0.5;
-        var y = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform = 'rotateY(' + (-14 + x * 16) + 'deg) rotateX(' + (6 - y * 12) + 'deg)';
-      });
-      stage.addEventListener('mouseleave', function () { card.style.transform = ''; });
-    }
-
-    // Tilt cards
-    document.querySelectorAll('[data-tilt]').forEach(function (el) {
-      el.addEventListener('mousemove', function (e) {
-        var r = el.getBoundingClientRect();
-        var x = (e.clientX - r.left) / r.width - 0.5;
-        var y = (e.clientY - r.top) / r.height - 0.5;
-        el.style.transform = 'perspective(900px) rotateY(' + x * 8 + 'deg) rotateX(' + -y * 8 + 'deg) translateY(-4px)';
-      });
-      el.addEventListener('mouseleave', function () { el.style.transform = ''; });
-    });
-  }
-
   // Portfolio filters
   var filterBtns = document.querySelectorAll('.filters button');
   filterBtns.forEach(function (btn) {
