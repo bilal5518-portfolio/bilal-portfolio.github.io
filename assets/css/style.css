@@ -19,6 +19,7 @@
   --amber-2:#FFD7A3;
   --teal:#34D3C0;
   --grad:linear-gradient(100deg,#FFD7A3 0%,#F4B76A 45%,#34D3C0 100%);
+  --btn-grad:linear-gradient(110deg,#FFB21E 0%,#FF6A2B 35%,#FF3D6E 70%,#FFB21E 100%);
   --display:"Syne",system-ui,sans-serif;
   --serif:"Instrument Serif",Georgia,serif;
   --body:"Manrope",system-ui,sans-serif;
@@ -61,12 +62,12 @@ body::before{content:"";position:fixed;inset:-50%;z-index:100;pointer-events:non
 /* ---------- Buttons ---------- */
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 28px;border-radius:999px;font-weight:700;font-size:16px;letter-spacing:-.01em;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s,border-color .3s;isolation:isolate;overflow:hidden;white-space:nowrap}
 .btn .ico{width:18px;height:18px}
-.btn-primary{background:var(--amber);color:#16110A;box-shadow:0 10px 40px -10px rgba(244,183,106,.55)}
+.btn-primary{background:var(--btn-grad);background-size:200% 100%;background-position:0 0;color:#fff;text-shadow:0 1px 2px rgba(120,20,0,.35);box-shadow:0 12px 36px -8px rgba(255,80,50,.7),inset 0 1px 0 rgba(255,255,255,.35)}
 .btn-primary::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,transparent 20%,rgba(255,255,255,.55) 50%,transparent 80%);transform:translateX(-120%);transition:transform .8s var(--ease)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 50px -12px rgba(244,183,106,.7)}
+.btn-primary:hover{transform:translateY(-2px);background-position:100% 0;box-shadow:0 18px 50px -10px rgba(255,61,110,.8),inset 0 1px 0 rgba(255,255,255,.35)}
 .btn-primary:hover::after{transform:translateX(120%)}
 .btn-ghost{border:1px solid var(--line-2);background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.btn-ghost:hover{border-color:var(--amber);transform:translateY(-2px)}
+.btn-ghost:hover{border-color:#FF6A2B;background:rgba(255,106,43,.1);transform:translateY(-2px)}
 .btn-sm{padding:11px 20px;font-size:14px}
 .link-arrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--amber)}
 .link-arrow svg{width:18px;height:18px;transition:transform .3s var(--ease)}
@@ -83,7 +84,7 @@ body::before{content:"";position:fixed;inset:-50%;z-index:100;pointer-events:non
 .nav{display:flex;align-items:center;gap:6px;padding:6px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.03);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .nav a{padding:9px 18px;border-radius:999px;font-size:15px;font-weight:600;color:var(--muted);transition:color .25s,background .25s}
 .nav a:hover{color:var(--text)}
-.nav a[aria-current="page"]{color:#16110A;background:var(--amber)}
+.nav a[aria-current="page"]{color:#fff;background:linear-gradient(110deg,#FF8A1E,#FF3D6E);box-shadow:0 6px 20px -6px rgba(255,61,110,.7)}
 .header-cta{display:flex;align-items:center;gap:10px}
 .menu-btn{display:none;width:46px;height:46px;border-radius:50%;border:1px solid var(--line-2);align-items:center;justify-content:center}
 .menu-btn span{position:relative;width:18px;height:2px;background:var(--text);border-radius:2px;transition:background .3s}
@@ -243,7 +244,7 @@ section{position:relative}
 .work-meta p{font-size:14px;color:var(--muted);margin-top:3px}
 .work-meta .go{width:44px;height:44px;flex-shrink:0;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;transition:background .3s,transform .4s var(--ease)}
 .work-meta .go svg{width:18px;height:18px}
-.work-card:hover .go{background:var(--amber);color:#111;transform:rotate(-45deg);border-color:transparent}
+.work-card:hover .go{background:linear-gradient(110deg,#FF8A1E,#FF3D6E);color:#fff;transform:rotate(-45deg);border-color:transparent}
 
 /* Concepts */
 .concepts{display:grid;grid-template-columns:1.4fr 1.4fr .7fr;gap:24px;align-items:end}
