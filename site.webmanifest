@@ -3,8 +3,8 @@
  "short_name": "Bilal",
  "start_url": "/",
  "display": "standalone",
- "background_color": "#06080A",
- "theme_color": "#06080A",
+ "background_color": "#FFFFFF",
+ "theme_color": "#D3261C",
  "icons": [
   {
    "src": "/assets/img/apple-touch-icon.png",
