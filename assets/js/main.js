@@ -208,3 +208,37 @@
     input.value = ''; ask(v);
   });
 })();
+
+/* lazy background videos */
+(function () {
+  var vids = document.querySelectorAll('video[data-src]');
+  if (!vids.length) return;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var save = navigator.connection && navigator.connection.saveData;
+  if (reduce || save) return;
+  function load(v) {
+    if (v.dataset.loaded) return;
+    var src = (v.dataset.srcSm && innerWidth < 768) ? v.dataset.srcSm : v.dataset.src;
+    v.src = src; v.dataset.loaded = 1;
+  }
+  function play(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      var v = e.target, box = v.closest('.reel');
+      if (e.isIntersecting) {
+        load(v);
+        if (!(box && box.classList.contains('paused'))) play(v);
+      } else if (v.dataset.loaded) { v.pause(); }
+    });
+  }, { rootMargin: '200px 0px' });
+  function start() { vids.forEach(function (v) { io.observe(v); }); }
+  if (document.readyState === 'complete') setTimeout(start, 400);
+  else window.addEventListener('load', function () { setTimeout(start, 400); });
+  document.querySelectorAll('.reel-toggle').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var box = b.closest('.reel'), v = box.querySelector('video');
+      if (box.classList.toggle('paused')) { v.pause(); b.setAttribute('aria-label', 'Play video'); }
+      else { load(v); play(v); b.setAttribute('aria-label', 'Pause video'); }
+    });
+  });
+})();
